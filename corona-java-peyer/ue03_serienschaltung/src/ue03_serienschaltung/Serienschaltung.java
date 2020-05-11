@@ -1,17 +1,19 @@
-package ue02_serienschaltung;
+package ue03_serienschaltung;
+
+import java.util.ArrayList;
 
 public class Serienschaltung {
     private double strom;
     private double spannung;
-    private double[] widerstandsFeld;
+    ArrayList<Double> widerstandsFeld = new ArrayList<>();
     
     private void updateSpannung(){
-        if(widerstandsFeld == null){
+        if(widerstandsFeld.isEmpty()){
             return;
         }
         double gesamtwiderstand = 0;
-        for(int i = 0; i < widerstandsFeld.length; i++){
-            gesamtwiderstand += widerstandsFeld[i];
+        for(int i = 0; i < widerstandsFeld.size(); i++){
+            gesamtwiderstand += widerstandsFeld.get(i);
         }
         spannung = gesamtwiderstand * strom;
     }
@@ -20,17 +22,7 @@ public class Serienschaltung {
         if(widerstandInOhm < 0 || widerstandInOhm > 10000000) {
             throw new InvalidResistorValueException(widerstandInOhm);
         }
-        if(widerstandsFeld == null){
-            widerstandsFeld = new double[1];
-            widerstandsFeld[0] = widerstandInOhm;
-        }else{
-            double[] backupWiderstandsFeld = widerstandsFeld;
-            widerstandsFeld = new double[widerstandsFeld.length + 1];
-            widerstandsFeld[widerstandsFeld.length - 1] = widerstandInOhm;
-            for(int i = 0; i < backupWiderstandsFeld.length; i++){
-                widerstandsFeld[i] = backupWiderstandsFeld[i];
-            }
-        }
+        widerstandsFeld.add(widerstandInOhm);
         
         updateSpannung();
     }

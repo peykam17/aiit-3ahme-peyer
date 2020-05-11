@@ -1,4 +1,4 @@
-package ue02_serienschaltung;
+package ue03_serienschaltung;
 
 public class InvalidResistorValueException extends Exception{
     

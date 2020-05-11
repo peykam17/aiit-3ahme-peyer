@@ -1,4 +1,4 @@
-package ue02_serienschaltung;
+package ue03_serienschaltung;
 
 public class TestSerienschaltung {
     public static void main(String[] args) {
@@ -13,6 +13,7 @@ public class TestSerienschaltung {
             if(ex instanceof InvalidResistorValueException){
                 double v = ((InvalidResistorValueException)ex).getInvalidValue();
             }
+            throw new TestFailedException(ex);
         }
         System.out.println("2: " + serienschaltung);
         serienschaltung.setStrom(0.5);
@@ -34,4 +35,12 @@ public class TestSerienschaltung {
         serienschaltung.setStrom(1);
         System.out.println("6: " + serienschaltung);
     }
+    
+    public static class TestFailedException extends RuntimeException{
+
+        public TestFailedException(Throwable cause) {
+            super(cause);
+    }
+    
+}
 }
