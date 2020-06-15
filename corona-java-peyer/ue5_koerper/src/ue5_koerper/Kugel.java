@@ -33,7 +33,7 @@ public class Kugel extends Koerper {
     
     @Override
     public double volumen() {
-        return (4.0 / 3.0) * Math.PI * Math.pow(r, 3.0);
+        return (4.0 / 3.0) * Math.PI * r * r * r;
     }
     
     @Override

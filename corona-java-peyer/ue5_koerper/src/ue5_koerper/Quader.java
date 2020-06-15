@@ -56,7 +56,7 @@ public class Quader extends Koerper{
 
     @Override
     public double oberflaeche() {
-        return 2.0 * a * b + 2.0 * a * h + 2.0 * b * h;
+        return (2.0 * a * b) + (2.0 * a * h) + (2.0 * b * h);
     }
     
     @Override
